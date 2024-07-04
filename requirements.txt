@@ -1,0 +1,16 @@
+# external packages
+tensorflow
+pandas 
+dvc
+notebook
+numpy
+matplotlib
+seaborn
+tqdm
+opencv-python
+mlflow
+streamlit
+
+
+# local package
+-e .
