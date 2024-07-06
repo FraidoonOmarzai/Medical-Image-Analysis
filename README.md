@@ -34,4 +34,12 @@ pip install -r requirements.txt
     - model evaluation
     - `note` we used the notebook in google colabs for experiment purposes and creating sample data for training and validating.
 
-    
+```bash
+## Workflows
+- update the constants
+- updata the artifact_entity
+- update the config_entity
+- update the components
+- update the pipeline
+- update the dvc.yaml (optional)
+```
