@@ -10,3 +10,8 @@ S3_FILE: str = 'RSNA.zip'
 # CONSTANTS FOR DATA INGESTIONS
 DATA_INGESTION_DIR: str = os.path.join(ARTIFACTS_DIR, 'DataIngestion')
 IMAGES_DIR: str = "images"
+
+
+# CONSTANTS FOR DATA VALIDATION
+DATA_VALIDATION_DIR: str = os.path.join(ARTIFACTS_DIR, 'DataValidation')
+IMG_STATUS_FILE: str = 'img_status.txt'

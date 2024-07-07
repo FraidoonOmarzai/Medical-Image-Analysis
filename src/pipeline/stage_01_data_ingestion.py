@@ -12,7 +12,7 @@ class DataIngestionPipeline:
 
     Methods:
         start_data_ingestion: Starts the data ingestion process.
-        run_pipeline: Runs the entire training pipeline.
+        run_pipeline: Runs the pipeline.
     """
 
     def __init__(self):

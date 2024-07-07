@@ -55,3 +55,8 @@ pip install -r requirements.txt
 - **Data Ingestion**
     - get the data from the bucket and save it in artifacts/data_ingestion
     - follow the above workflows to get the data from the S3 bucket
+
+
+- **Data Validations**
+    - we are going to verify the file format
+    - `file_format = ["JPEG"]`

@@ -5,12 +5,12 @@ stages:
     deps:
     - path: src\constants\__init__.py
       hash: md5
-      md5: 43a7b6f7c9336c8b02f76d378afe0eb1
-      size: 328
+      md5: 526441e306538f133ce779769d6077f5
+      size: 480
     - path: src\pipeline\stage_01_data_ingestion.py
       hash: md5
-      md5: 63f7f48ff3f0edaa9eaa889cb103c131
-      size: 1372
+      md5: 07c6f31acea8ce48e2f7d3a849af9a37
+      size: 1356
     outs:
     - path: artifacts\DataIngestion\RSNA.zip
       hash: md5
@@ -21,3 +21,14 @@ stages:
       md5: 23e2e528ade7e201804b85414b77d3be.dir
       size: 37390152
       nfiles: 600
+  data_validation:
+    cmd: python src\pipeline\stage_02_data_validation.py
+    deps:
+    - path: src\constants\__init__.py
+      hash: md5
+      md5: 526441e306538f133ce779769d6077f5
+      size: 480
+    - path: src\pipeline\stage_02_data_validation.py
+      hash: md5
+      md5: 71921fb128de84c20c2b85acfc89174d
+      size: 1382
