@@ -43,3 +43,11 @@ pip install -r requirements.txt
 - update the pipeline
 - update the dvc.yaml (optional)
 ```
+
+- **S3 Storage**
+    - add s3_operations.py for uploading and downloading files to/from s3 bucket
+    - we need to run the below command which allows to configure AWS credentials and settings
+    ```bash
+    aws configure  
+    ```
+    - our goal is to store the sample data in s3 bucket which we created in google colabs
