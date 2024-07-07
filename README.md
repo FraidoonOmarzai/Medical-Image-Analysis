@@ -51,3 +51,7 @@ pip install -r requirements.txt
     aws configure  
     ```
     - our goal is to store the sample data in s3 bucket which we created in google colabs
+
+- **Data Ingestion**
+    - get the data from the bucket and save it in artifacts/data_ingestion
+    - follow the above workflows to get the data from the S3 bucket

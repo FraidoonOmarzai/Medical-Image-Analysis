@@ -1,0 +1,9 @@
+stages:
+  data_ingestion:
+    cmd: python src\pipeline\stage_01_data_ingestion.py
+    deps:
+      - src\pipeline\stage_01_data_ingestion.py
+      - src\constants\__init__.py
+    outs:
+      - artifacts\DataIngestion\images
+      - artifacts\DataIngestion\RSNA.zip
