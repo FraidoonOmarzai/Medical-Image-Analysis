@@ -13,3 +13,13 @@ stages:
     deps:
       - src\pipeline\stage_02_data_validation.py
       - src\constants\__init__.py
+
+  model_training:
+    cmd: python src\pipeline\stage_03_training_evaluation.py
+    deps:
+      - src\pipeline\stage_03_training_evaluation.py
+      - artifacts\DataIngestion\images
+      - src\constants\__init__.py
+      - src\model\model.py
+    outs:
+      - artifacts\ModelTrainings\model.h5

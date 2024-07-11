@@ -15,3 +15,13 @@ IMAGES_DIR: str = "images"
 # CONSTANTS FOR DATA VALIDATION
 DATA_VALIDATION_DIR: str = os.path.join(ARTIFACTS_DIR, 'DataValidation')
 IMG_STATUS_FILE: str = 'img_status.txt'
+
+
+# CONSTANS FOR MODET TRAINING 
+MODEL_TRAINING_DIR: str = os.path.join(ARTIFACTS_DIR, 'ModelTrainings')
+UNZIP_DIR: str = os.path.join(DATA_INGESTION_DIR, IMAGES_DIR)
+SAVE_MODEL_NAME: str = 'model.h5'
+
+IMAGE_SIZE: int = (224, 224)
+BATCH_SIZE: int = 32
+EPOCHS: int = 20

@@ -5,8 +5,8 @@ stages:
     deps:
     - path: src\constants\__init__.py
       hash: md5
-      md5: 526441e306538f133ce779769d6077f5
-      size: 480
+      md5: e640ddf111e16db9be492e75289a0c2e
+      size: 759
     - path: src\pipeline\stage_01_data_ingestion.py
       hash: md5
       md5: 07c6f31acea8ce48e2f7d3a849af9a37
@@ -26,9 +26,34 @@ stages:
     deps:
     - path: src\constants\__init__.py
       hash: md5
-      md5: 526441e306538f133ce779769d6077f5
-      size: 480
+      md5: e640ddf111e16db9be492e75289a0c2e
+      size: 759
     - path: src\pipeline\stage_02_data_validation.py
       hash: md5
       md5: 71921fb128de84c20c2b85acfc89174d
       size: 1382
+  model_training:
+    cmd: python src\pipeline\stage_03_training_evaluation.py
+    deps:
+    - path: artifacts\DataIngestion\images
+      hash: md5
+      md5: 23e2e528ade7e201804b85414b77d3be.dir
+      size: 37390152
+      nfiles: 600
+    - path: src\constants\__init__.py
+      hash: md5
+      md5: e640ddf111e16db9be492e75289a0c2e
+      size: 759
+    - path: src\model\model.py
+      hash: md5
+      md5: 752535c0a4c308c88a3e35edcc665071
+      size: 2309
+    - path: src\pipeline\stage_03_training_evaluation.py
+      hash: md5
+      md5: 74388b3ca65635e5e430720355a22c81
+      size: 1430
+    outs:
+    - path: artifacts\ModelTrainings\model.h5
+      hash: md5
+      md5: 9aa90028987b533183528f3201367cae
+      size: 18781512

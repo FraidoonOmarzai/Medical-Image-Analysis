@@ -36,3 +36,25 @@ class DataValidationConfig:
         self.IMAGE_DIR_PATH = os.path.join(DATA_INGESTION_DIR, IMAGES_DIR)
         self.IMG_STATUS_FILE_PATH = os.path.join(
             self.DATA_VALIDATION_PATH, IMG_STATUS_FILE)
+
+
+class ModelTrainingConfig:
+    """A class to hold configuration parameters for model training.
+
+    This class provides a convenient way to configure parameters related to model training and evaluation.
+
+    args:
+
+    """
+
+    def __init__(self) -> None:
+        self.MODEL_TRAINING_DIR = os.path.join(MODEL_TRAINING_DIR)
+        self.UNZIP_PATH = os.path.join(UNZIP_DIR)
+        self.TRAIN_DIR = os.path.join(self.UNZIP_PATH, 'train')
+        self.VAL_DIR = os.path.join(self.UNZIP_PATH, 'val')
+        self.SAVE_MODEL_PATH = os.path.join(
+            self.MODEL_TRAINING_DIR, SAVE_MODEL_NAME)
+
+        self.IMAGE_SIZE = IMAGE_SIZE
+        self.BATCH_SIZE = BATCH_SIZE
+        self.EPOCHS = EPOCHS

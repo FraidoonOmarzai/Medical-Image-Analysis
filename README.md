@@ -60,3 +60,9 @@ pip install -r requirements.txt
 - **Data Validations**
     - we are going to verify the file format
     - `file_format = ["JPEG"]`
+
+- **Model Training**
+    - model training and evaluation 
+    - follow the above workflows
+    - add the model architecture to model/model.py
+    - save the model 
