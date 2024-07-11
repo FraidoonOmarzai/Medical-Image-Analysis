@@ -11,6 +11,9 @@ from pathlib import Path
 import os
 import sys
 
+import mlflow
+from dagshub.common import config
+
 
 class ModelTraining:
     """A class for training DL models.
@@ -81,11 +84,40 @@ class ModelTraining:
                           optimizer=tf.keras.optimizers.Adam(0.001),
                           metrics=["accuracy"])
 
-            logging.info("model fit...")
-            model.fit(train_data,
-                      epochs=self.model_training_config.EPOCHS,
-                      validation_data=test_data,
-                      callbacks=[self.early_stoping()])
+            ##### addinng MLflow #####
+            logging.info("mlflow...")
+
+            # mlflow.set_registry_uri(REMOTE_SERVER_URI)
+            mlflow.set_tracking_uri(REMOTE_SERVER_URI)
+
+            mlflow.set_experiment(EXPERIMENT_NAME)
+            tracking_url_type_store = urlparse(
+                mlflow.get_tracking_uri()).scheme
+
+            with mlflow.start_run(run_name=RUN_NAME) as mlops_run:
+                # with mlflow.start_run():
+
+                logging.info("model fit...")
+                model.fit(train_data,
+                          epochs=self.model_training_config.EPOCHS,
+                          validation_data=test_data,
+                          callbacks=[self.early_stoping()])
+
+                # evaluate the model
+                results = model.evaluate(test_data)
+                logging.info(f"Model evaluation: {results}")
+
+                mlflow.log_param('batch size', BATCH_SIZE)
+                mlflow.log_param('epochs', EPOCHS)
+
+                mlflow.log_metric('accuracy', results[1])
+
+                if tracking_url_type_store != "file":
+                    # Register the model
+                    mlflow.tensorflow.log_model(
+                        model, "mlflow_model.h5", registered_model_name=REGISTERED_MODEL_NAME)
+                else:
+                    mlflow.tensorflow.log_model(model, "mlflow_model.h5")
 
             # evaluate the model
             results = model.evaluate(test_data)

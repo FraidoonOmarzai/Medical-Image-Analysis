@@ -24,4 +24,12 @@ SAVE_MODEL_NAME: str = 'model.h5'
 
 IMAGE_SIZE: int = (224, 224)
 BATCH_SIZE: int = 32
-EPOCHS: int = 20
+EPOCHS: int = 2
+
+
+# MLflow CONSTANTS
+ARTIFACTS_DIR: str = "mlflow_artifacts"
+EXPERIMENT_NAME: str = "medimg_experiment"
+RUN_NAME: str = "Transfer_learning_Model"
+REGISTERED_MODEL_NAME: str = "EfficientNet"
+REMOTE_SERVER_URI: str = "https://dagshub.com/fraidoon_omarzai/Medical-Image-Analysis.mlflow"

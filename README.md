@@ -66,3 +66,13 @@ pip install -r requirements.txt
     - follow the above workflows
     - add the model architecture to model/model.py
     - save the model 
+
+- **Adding MLflow**
+    - add MLflow for managing ML experiments, track metrics and parameters, and compare different model iterations
+    - using `Dagshub`
+    - env variables
+    ```bash
+    export MLFLOW_TRACKING_URI=https://dagshub.com/fraidoon_omarzai/Medical-Image-Analysis.mlflow
+    export MLFLOW_TRACKING_USERNAME=fraidoon_omarzai 
+    export MLFLOW_TRACKING_PASSWORD=bc...
+    ```
