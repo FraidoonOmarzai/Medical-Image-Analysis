@@ -72,7 +72,16 @@ pip install -r requirements.txt
     - using `Dagshub`
     - env variables
     ```bash
-    export MLFLOW_TRACKING_URI=https://dagshub.com/fraidoon_omarzai/Medical-Image-Analysis.mlflow
-    export MLFLOW_TRACKING_USERNAME=fraidoon_omarzai 
-    export MLFLOW_TRACKING_PASSWORD=bc...
+    export MLFLOW_TRACKING_URI='https://dagshub.com/fraidoon_omarzai/Medical-Image-Analysis.mlflow'
+    export MLFLOW_TRACKING_USERNAME='fraidoon_omarzai' 
+    export MLFLOW_TRACKING_PASSWORD='bc....'
+    ```
+    - create `.env` and store the dagshub tocken on it
+    ```bash
+    from dotenv import load_dotenv
+    load_dotenv() 
+    
+    os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/fraidoon_omarzai/Medical-Image-Analysis.mlflow"
+    os.environ["MLFLOW_TRACKING_USERNAME"]="fraidoon_omarzai"
+    os.environ["MLFLOW_TRACKING_PASSWORD"]=os.getenv('DAGSHUB_TOKEN')
     ```

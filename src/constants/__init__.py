@@ -20,15 +20,14 @@ IMG_STATUS_FILE: str = 'img_status.txt'
 # CONSTANS FOR MODET TRAINING 
 MODEL_TRAINING_DIR: str = os.path.join(ARTIFACTS_DIR, 'ModelTrainings')
 UNZIP_DIR: str = os.path.join(DATA_INGESTION_DIR, IMAGES_DIR)
-SAVE_MODEL_NAME: str = 'model.h5'
+SAVE_MODEL_NAME: str = 'model.keras'
 
 IMAGE_SIZE: int = (224, 224)
 BATCH_SIZE: int = 32
 EPOCHS: int = 2
 
 
-# MLflow CONSTANTS
-ARTIFACTS_DIR: str = "mlflow_artifacts"
+# CONSTANTS FOR MLflow 
 EXPERIMENT_NAME: str = "medimg_experiment"
 RUN_NAME: str = "Transfer_learning_Model"
 REGISTERED_MODEL_NAME: str = "EfficientNet"

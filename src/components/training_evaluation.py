@@ -1,3 +1,4 @@
+import warnings
 from src.exception import CustomException
 from src.logger import logging
 from src.entity.config_entity import ModelTrainingConfig
@@ -12,7 +13,12 @@ import os
 import sys
 
 import mlflow
-from dagshub.common import config
+
+from dotenv import load_dotenv
+load_dotenv()  # take environment variables from .env
+
+
+warnings.filterwarnings("ignore", message="Setuptools is replacing distutils.")
 
 
 class ModelTraining:
@@ -87,7 +93,11 @@ class ModelTraining:
             ##### addinng MLflow #####
             logging.info("mlflow...")
 
-            # mlflow.set_registry_uri(REMOTE_SERVER_URI)
+            # dagshub configuration
+            os.environ["MLFLOW_TRACKING_URI"] = "https://dagshub.com/fraidoon_omarzai/Medical-Image-Analysis.mlflow"
+            os.environ["MLFLOW_TRACKING_USERNAME"] = "fraidoon_omarzai"
+            os.environ["MLFLOW_TRACKING_PASSWORD"] = os.getenv('DAGSHUB_TOKEN')
+
             mlflow.set_tracking_uri(REMOTE_SERVER_URI)
 
             mlflow.set_experiment(EXPERIMENT_NAME)
@@ -95,7 +105,8 @@ class ModelTraining:
                 mlflow.get_tracking_uri()).scheme
 
             with mlflow.start_run(run_name=RUN_NAME) as mlops_run:
-                # with mlflow.start_run():
+
+                mlflow.tensorflow.autolog()
 
                 logging.info("model fit...")
                 model.fit(train_data,
@@ -107,10 +118,10 @@ class ModelTraining:
                 results = model.evaluate(test_data)
                 logging.info(f"Model evaluation: {results}")
 
-                mlflow.log_param('batch size', BATCH_SIZE)
-                mlflow.log_param('epochs', EPOCHS)
+                # mlflow.log_param('batch size', BATCH_SIZE)
+                # mlflow.log_param('epochs', EPOCHS)
 
-                mlflow.log_metric('accuracy', results[1])
+                # mlflow.log_metric('accuracy', results[1])
 
                 if tracking_url_type_store != "file":
                     # Register the model
@@ -120,9 +131,6 @@ class ModelTraining:
                     mlflow.tensorflow.log_model(model, "mlflow_model.h5")
 
             # evaluate the model
-            results = model.evaluate(test_data)
-            logging.info(f"Model evaluation: {results}")
-
             logging.info("Current trained model evaluation....")
             results_model = model.evaluate(test_data)
             logging.info(
