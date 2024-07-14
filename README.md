@@ -90,4 +90,6 @@ pip install -r requirements.txt
     - we are going to load all models from dagshub using MLflow
     - transitions the model to stage (from none, to staging, to production) 
     - best model to "Production" stage and rest to "Staging" stage
+
+- **model pusher**    
     - store the best model in S3 bucket

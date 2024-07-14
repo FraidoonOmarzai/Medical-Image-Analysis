@@ -5,8 +5,8 @@ stages:
     deps:
     - path: src\constants\__init__.py
       hash: md5
-      md5: 67988f32c7e4c897d4b62733d706515b
-      size: 1020
+      md5: 79983540b98fd5e5a1cc5b4f268e5499
+      size: 1184
     - path: src\pipeline\stage_01_data_ingestion.py
       hash: md5
       md5: 07c6f31acea8ce48e2f7d3a849af9a37
@@ -26,12 +26,17 @@ stages:
     deps:
     - path: src\constants\__init__.py
       hash: md5
-      md5: 67988f32c7e4c897d4b62733d706515b
-      size: 1020
+      md5: 79983540b98fd5e5a1cc5b4f268e5499
+      size: 1184
     - path: src\pipeline\stage_02_data_validation.py
       hash: md5
       md5: 71921fb128de84c20c2b85acfc89174d
       size: 1382
+    outs:
+    - path: artifacts\DataValidation\img_status.txt
+      hash: md5
+      md5: 89df6ef5d60bae657a8f6a27863267fe
+      size: 32
   model_training:
     cmd: python src\pipeline\stage_03_training_evaluation.py
     deps:
@@ -42,8 +47,8 @@ stages:
       nfiles: 600
     - path: src\constants\__init__.py
       hash: md5
-      md5: 67988f32c7e4c897d4b62733d706515b
-      size: 1020
+      md5: 79983540b98fd5e5a1cc5b4f268e5499
+      size: 1184
     - path: src\model\model.py
       hash: md5
       md5: 469d3d731f3da37f32f8189427aa40d5
@@ -55,5 +60,21 @@ stages:
     outs:
     - path: artifacts\ModelTrainings\model.keras
       hash: md5
-      md5: 0faae906c9b6d96ddb26f37a46cb98fe
+      md5: a81a671ff284f7b561107a7043ad74b9
       size: 21495570
+  log_production_model:
+    cmd: python src\pipeline\stage_04_log_prod_model.py
+    deps:
+    - path: src\constants\__init__.py
+      hash: md5
+      md5: 79983540b98fd5e5a1cc5b4f268e5499
+      size: 1184
+    - path: src\pipeline\stage_04_log_prod_model.py
+      hash: md5
+      md5: 3b9c93ad107af3a77a18f46e4d7a17db
+      size: 1526
+    outs:
+    - path: artifacts\LogProductionModel\mlflow_model.keras
+      hash: md5
+      md5: d01cfcfb26f4339184c3a3178331d40a
+      size: 19117077
