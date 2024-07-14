@@ -11,6 +11,7 @@ import tensorflow as tf
 from pathlib import Path
 import os
 import sys
+import pandas as pd
 
 import mlflow
 
@@ -18,7 +19,7 @@ from dotenv import load_dotenv
 load_dotenv()  # take environment variables from .env
 
 
-warnings.filterwarnings("ignore", message="Setuptools is replacing distutils.")
+warnings.filterwarnings("ignore")
 
 
 class ModelTraining:
@@ -106,29 +107,36 @@ class ModelTraining:
 
             with mlflow.start_run(run_name=RUN_NAME) as mlops_run:
 
-                mlflow.tensorflow.autolog()
+                # mlflow.tensorflow.autolog()
 
                 logging.info("model fit...")
-                model.fit(train_data,
-                          epochs=self.model_training_config.EPOCHS,
-                          validation_data=test_data,
-                          callbacks=[self.early_stoping()])
+                history = model.fit(train_data,
+                                    epochs=self.model_training_config.EPOCHS,
+                                    validation_data=test_data,
+                                    callbacks=[self.early_stoping()])
+
+                # Optionally, log the final model accuracy
+                final_train_accuracy = history.history['accuracy'][-1]
+                final_train_loss = history.history['loss'][-1]
+                mlflow.log_metric("final_train_accuracy", final_train_accuracy)
+                mlflow.log_metric("final_train_loss", final_train_loss)
+
+                # log parameters
+                mlflow.log_param('batch size', BATCH_SIZE)
+                mlflow.log_param('epochs', EPOCHS)
 
                 # evaluate the model
-                results = model.evaluate(test_data)
-                logging.info(f"Model evaluation: {results}")
-
-                # mlflow.log_param('batch size', BATCH_SIZE)
-                # mlflow.log_param('epochs', EPOCHS)
-
-                # mlflow.log_metric('accuracy', results[1])
+                logging.info("Model evaluation...")
+                loss, accuracy = model.evaluate(test_data)
+                mlflow.log_metric("val_accuracy", accuracy)
+                mlflow.log_metric("val_loss", loss)
 
                 if tracking_url_type_store != "file":
                     # Register the model
                     mlflow.tensorflow.log_model(
-                        model, "mlflow_model.h5", registered_model_name=REGISTERED_MODEL_NAME)
+                        model, "mlflow_model.keras", registered_model_name=REGISTERED_MODEL_NAME)
                 else:
-                    mlflow.tensorflow.log_model(model, "mlflow_model.h5")
+                    mlflow.tensorflow.log_model(model, "mlflow_model.keras")
 
             # evaluate the model
             logging.info("Current trained model evaluation....")

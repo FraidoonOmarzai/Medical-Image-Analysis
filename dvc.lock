@@ -5,8 +5,8 @@ stages:
     deps:
     - path: src\constants\__init__.py
       hash: md5
-      md5: e640ddf111e16db9be492e75289a0c2e
-      size: 759
+      md5: 67988f32c7e4c897d4b62733d706515b
+      size: 1020
     - path: src\pipeline\stage_01_data_ingestion.py
       hash: md5
       md5: 07c6f31acea8ce48e2f7d3a849af9a37
@@ -26,8 +26,8 @@ stages:
     deps:
     - path: src\constants\__init__.py
       hash: md5
-      md5: e640ddf111e16db9be492e75289a0c2e
-      size: 759
+      md5: 67988f32c7e4c897d4b62733d706515b
+      size: 1020
     - path: src\pipeline\stage_02_data_validation.py
       hash: md5
       md5: 71921fb128de84c20c2b85acfc89174d
@@ -42,18 +42,18 @@ stages:
       nfiles: 600
     - path: src\constants\__init__.py
       hash: md5
-      md5: e640ddf111e16db9be492e75289a0c2e
-      size: 759
+      md5: 67988f32c7e4c897d4b62733d706515b
+      size: 1020
     - path: src\model\model.py
       hash: md5
-      md5: 752535c0a4c308c88a3e35edcc665071
-      size: 2309
+      md5: 469d3d731f3da37f32f8189427aa40d5
+      size: 2356
     - path: src\pipeline\stage_03_training_evaluation.py
       hash: md5
       md5: 74388b3ca65635e5e430720355a22c81
       size: 1430
     outs:
-    - path: artifacts\ModelTrainings\model.h5
+    - path: artifacts\ModelTrainings\model.keras
       hash: md5
-      md5: 9aa90028987b533183528f3201367cae
-      size: 18781512
+      md5: 0faae906c9b6d96ddb26f37a46cb98fe
+      size: 21495570

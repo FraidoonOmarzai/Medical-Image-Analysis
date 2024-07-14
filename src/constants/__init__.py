@@ -24,11 +24,11 @@ SAVE_MODEL_NAME: str = 'model.keras'
 
 IMAGE_SIZE: int = (224, 224)
 BATCH_SIZE: int = 32
-EPOCHS: int = 2
+EPOCHS: int = 20
 
 
 # CONSTANTS FOR MLflow 
-EXPERIMENT_NAME: str = "medimg_experiment"
+EXPERIMENT_NAME: str = "medimgExperiments"
 RUN_NAME: str = "Transfer_learning_Model"
-REGISTERED_MODEL_NAME: str = "EfficientNet"
+REGISTERED_MODEL_NAME: str = "EfficientNetB0"
 REMOTE_SERVER_URI: str = "https://dagshub.com/fraidoon_omarzai/Medical-Image-Analysis.mlflow"

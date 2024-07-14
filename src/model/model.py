@@ -40,8 +40,9 @@ class ModelArchitecture:
             # pool the outputs of the base model
             x = tf.keras.layers.GlobalAveragePooling2D(
                 name="global_average_pooling")(x)
-            # x = tf.keras.layers.Dense(256, activation='relu')(x)
+            x = tf.keras.layers.Dense(256, activation='relu')(x)
             x = tf.keras.layers.Dense(128, activation='relu')(x)
+            x = tf.keras.layers.Dropout(0.5)(x)
             x = tf.keras.layers.Dense(64, activation='relu')(x)
             x = tf.keras.layers.Dropout(0.5)(x)
             x = tf.keras.layers.Dense(32, activation='relu')(x)
