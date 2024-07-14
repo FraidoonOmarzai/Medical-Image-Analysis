@@ -14,3 +14,8 @@ class DataValidationArtifacts:
 @dataclass
 class ModelTrainingArtifacts:
     MODEL_TRAINED_PATH: str
+
+
+@dataclass
+class LogProductionModelArtifacts:
+    BEST_MODEL_PATH: str

@@ -32,3 +32,8 @@ EXPERIMENT_NAME: str = "medimgExperiments"
 RUN_NAME: str = "Transfer_learning_Model"
 REGISTERED_MODEL_NAME: str = "EfficientNetB0"
 REMOTE_SERVER_URI: str = "https://dagshub.com/fraidoon_omarzai/Medical-Image-Analysis.mlflow"
+
+
+# CONSTANTS FOR LOG PRODUCTION MODEL
+LOG_PROD_MODEL_DIR: str = os.path.join(ARTIFACTS_DIR, 'LogProductionModel')
+BEST_MODEL_NAME: str = 'mlflow_model.keras'

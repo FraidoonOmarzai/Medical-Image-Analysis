@@ -58,3 +58,16 @@ class ModelTrainingConfig:
         self.IMAGE_SIZE = IMAGE_SIZE
         self.BATCH_SIZE = BATCH_SIZE
         self.EPOCHS = EPOCHS
+
+
+class LogProductionModelConfig:
+    """A class to hold configuration parameters for log production model.
+
+    args:
+
+    """
+
+    def __init__(self) -> None:
+        self.LOG_PROD_MODEL_DIR = os.path.join(LOG_PROD_MODEL_DIR)
+        self.BEST_MODEL_PATH = os.path.join(
+            self.LOG_PROD_MODEL_DIR, BEST_MODEL_NAME)
