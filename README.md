@@ -85,3 +85,9 @@ pip install -r requirements.txt
     os.environ["MLFLOW_TRACKING_USERNAME"]="fraidoon_omarzai"
     os.environ["MLFLOW_TRACKING_PASSWORD"]=os.getenv('DAGSHUB_TOKEN')
     ```
+
+- **log from Dagshub**
+    - we are going to load the all models from dagshub using MLflow
+    - transitions the model to stage (from none, to staging, to production) 
+    - best model to "Production" stage and rest to "Staging" stage
+    - store the best model in S3 bucket
