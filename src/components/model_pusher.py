@@ -24,7 +24,7 @@ class ModelPusher:
             logging.info("sync_folder_to_s3....")
             self.s3_operation.sync_folder_to_s3(self.model_pusher_config.LOG_PROD_MODEL_DIR,
                                                 self.model_pusher_config.BUCKET_NAME,
-                                                self.model_pusher_config.BEST_MODEL_NAME)
+                                                self.model_pusher_config.BUCKET_FOLDER_NAME)
 
             model_pusher_artifact = ModelPusherArtifacts(
                 self.model_pusher_config.BUCKET_NAME

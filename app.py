@@ -1,5 +1,6 @@
-from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
+from tensorflow.keras.models import load_model
+from src.pipeline.prediction_pipeline import PredictionPipeline
 import streamlit as st
 import os
 from pathlib import Path
@@ -15,9 +16,11 @@ def save_image(uploaded_file):
             f.write(uploaded_file.read())
         # st.success(f"Image saved to {save_path}")
         st.image(uploaded_file,)
+        
+        pred_pipeline = PredictionPipeline()
+        model_path = pred_pipeline.run_pipeline()
 
-        model = load_model(
-            Path("artifacts\LogProductionModel\mlflow_model.keras"))
+        model = load_model(model_path)
 
         # test_image = image.load_img(Path("artifacts\img.jpeg"), target_size = (224,224))
         test_image = image.load_img(uploaded_file, target_size=(224, 224))

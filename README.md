@@ -102,5 +102,5 @@ pip install -r requirements.txt
 
 
 - **streamlit and prediction pipeline**
-    - create an application using streamlit
-    - create prediction pipeline
+    - create an application using streamlit -> `app.y`
+    - create prediction pipeline, it will download the best model from s3 -> `prediction_pipeline.py`

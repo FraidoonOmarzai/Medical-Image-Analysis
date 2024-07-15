@@ -36,4 +36,5 @@ REMOTE_SERVER_URI: str = "https://dagshub.com/fraidoon_omarzai/Medical-Image-Ana
 
 # CONSTANTS FOR LOG PRODUCTION MODEL
 LOG_PROD_MODEL_DIR: str = os.path.join(ARTIFACTS_DIR, 'LogProductionModel')
+S3_MODEL_FOLDER: str = 'mlflow_model'
 BEST_MODEL_NAME: str = 'mlflow_model.keras'

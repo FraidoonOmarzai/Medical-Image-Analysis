@@ -90,4 +90,4 @@ class ModelPusherConfig:
         pass
         self.LOG_PROD_MODEL_DIR = os.path.join(LOG_PROD_MODEL_DIR)
         self.BUCKET_NAME = BUCKET_NAME
-        self.BEST_MODEL_NAME = BEST_MODEL_NAME
+        self.BUCKET_FOLDER_NAME = S3_MODEL_FOLDER
