@@ -19,3 +19,8 @@ class ModelTrainingArtifacts:
 @dataclass
 class LogProductionModelArtifacts:
     BEST_MODEL_PATH: str
+
+
+@dataclass
+class ModelPusherArtifacts:
+    BUCKET_NAME: str
