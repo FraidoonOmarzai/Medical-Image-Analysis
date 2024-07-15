@@ -33,3 +33,9 @@ stages:
       - src\constants\__init__.py
     outs:
       - artifacts\LogProductionModel\mlflow_model.keras
+
+  model_pusher:
+    cmd: python src\pipeline\stage_05_model_pusher.py
+    deps:
+      - src\pipeline\stage_05_model_pusher.py
+      - artifacts\LogProductionModel\mlflow_model.keras
