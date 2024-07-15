@@ -100,3 +100,7 @@ pip install -r requirements.txt
     - add code to demo.py
     - run python demo.py
 
+
+- **streamlit and prediction pipeline**
+    - create an application using streamlit
+    - create prediction pipeline
