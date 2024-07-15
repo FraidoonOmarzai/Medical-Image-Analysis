@@ -93,3 +93,10 @@ pip install -r requirements.txt
 
 - **model pusher**    
     - store the best model in S3 bucket
+
+
+- Add everything to train_pipeline
+    - create src\pipeline\train_pipeline.py
+    - add code to demo.py
+    - run python demo.py
+
