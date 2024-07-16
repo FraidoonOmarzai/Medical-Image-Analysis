@@ -104,3 +104,17 @@ pip install -r requirements.txt
 - **streamlit and prediction pipeline**
     - create an application using streamlit -> `app.y`
     - create prediction pipeline, it will download the best model from s3 -> `prediction_pipeline.py`
+
+
+- Docker file
+    - create Dockerfile
+    - built a docker images
+    ```bash
+    docker build -t medimg-app .
+    docker ps
+    docker images
+    ```
+    - running our app
+    ```bash
+    docker run -p 8080:8080 medimg-app
+    ```
