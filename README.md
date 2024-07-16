@@ -118,3 +118,7 @@ pip install -r requirements.txt
     ```bash
     docker run -p 8080:8080 medimg-app
     ```
+    - finally, open the browser and run:
+    ```bash
+    htpp://localhost:8080
+    ```
