@@ -106,7 +106,7 @@ pip install -r requirements.txt
     - create prediction pipeline, it will download the best model from s3 -> `prediction_pipeline.py`
 
 
-- Docker file
+- **Docker file**
     - create Dockerfile
     - built a docker images
     ```bash
@@ -122,3 +122,9 @@ pip install -r requirements.txt
     ```bash
     htpp://localhost:8080
     ```
+
+- **CI/CD (GithubAction)**
+    - create `.github/workflows/docker.yaml`
+    - add code to `docker.yaml`
+    - build and push the docker to docker hub
+
