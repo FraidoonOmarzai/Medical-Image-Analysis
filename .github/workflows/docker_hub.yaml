@@ -3,7 +3,7 @@ name: Publish Docker image
 on:
   push:
     branches:
-      - main
+      - docker # main -> change it back to main when you want to push docker image
 
 jobs:
   build:

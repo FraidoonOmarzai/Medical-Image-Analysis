@@ -126,5 +126,65 @@ pip install -r requirements.txt
 - **CI/CD (GithubAction)**
     - create `.github/workflows/docker.yaml`
     - add code to `docker.yaml`
-    - build and push the docker to docker hub
+    - build and push to docker hub
 
+#####################**AWS Section**#####################
+
+```bash
+# Description about the deployment:
+1. Build docker image of the source code
+2. Push your docker image to ECR
+3. Launch Your EC2 
+4. Pull Your image from ECR in EC2
+5. Lauch your docker image in EC2
+
+
+# Notes
+ECR: Elastic Container registry to save your docker image in AWS
+EC2: It is virtual machine
+```
+
+### Steps:
+
+1. Login to AWS console and create IAM user for deployment. Download the access key.
+```bash
+# Policy for IAM:
+1. AmazonEC2ContainerRegistryFullAccess
+2. AmazonEC2FullAccess
+```
+
+2. Create ECR repo to store/save docker image
+```bash
+Save the URI: 851725628730.dkr.ecr.eu-west-2.amazonaws.com/medimg
+```
+3. Create EC2 machine (Ubuntu)
+4. Open EC2 and Install docker in EC2 Machine
+```bash
+#optinal
+sudo apt-get update
+sudo apt-get upgrade -y
+
+#required
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker ubuntu
+newgrp docker
+```
+
+5. Configure EC2 as self-hosted runner
+```bash
+1. open your github repository
+2. go to the setting
+3. find the actions -> runner
+4. new self hosted runner -> choose os
+5. copy each command and run it on EC2 Instance Connect
+```
+
+6. Setup github secrets
+```bash
+AWS_ACCESS_KEY_ID=...
+AWS_SECRET_ACCESS_KEY=...
+AWS_REGION = eu-west-2
+AWS_ECR_LOGIN_URI =  851725628730.dkr.ecr.eu-west-2.amazonaws.com
+ECR_REPOSITORY_NAME = medimg
+```
